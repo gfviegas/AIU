@@ -1,0 +1,31 @@
+{
+  "name": "AIU",
+  "title": "Assync Image Uploader",
+  "description": "Upload your image and see it without refrshing your page!",
+  "keywords": [
+    "jquery",
+    "AIU",
+    "plugins",
+    "ajax",
+    "php",
+    "image",
+    "upload",
+    "input",
+    "file"
+  ],
+  "version": "1.0.0",
+  "author": {
+    "name": "Gustavo Viegas",
+    "url": "https://github.com/gfviegas"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "bugs": "https://github.com/gfviegas/AIU/issues",
+  "homepage": "http://live-demo-aiu.hol.es/",
+  "docs": "https://github.com/gfviegas/AIU/blob/master/README.md",
+  "download": "https://github.com/gfviegas/AIU/archive/master.zip"
+}
