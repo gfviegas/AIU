@@ -1,0 +1,44 @@
+#upload-wrap {
+	padding: 20px;
+	border-style:solid;
+	border-width: 1px;
+	border-color: #919481;
+	background-color: #EDEDED;
+	width: 600px;
+}
+.photo_error {
+	display: none;
+	border-style:solid;
+	border-width: 1px;
+	border-color: #FF0000;
+	background: #FFB7B7;
+	color: #FF0000;
+	margin: 5px;
+	width: 450px;
+	height: auto;
+	text-align: center;
+}
+#upload-show{
+	text-align: center;
+	width: 200px;
+	height: auto;
+	padding: 5px;
+	border-style:solid;
+	border-width: 1px;
+	border-color: #000000;
+	position: relative;
+	left: 40%;
+	background-color: #FFFFFF;
+}
+#photo_preview{
+	height: auto;
+	max-width: 200px;
+}
+.loading {
+	width: 80px;
+	height: 80px;
+}
+.attention{
+	color: #930001;
+	font-size: 70%;
+}
