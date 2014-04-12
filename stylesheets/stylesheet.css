@@ -183,6 +183,15 @@ pre code {
   border: none;
   padding: 0;
 }
+pre code .red {
+  color: #d02879;
+}
+pre code .yellow {
+  color: #FF9900;
+}
+pre code .green {
+  color: green;
+}
 
 ul, ol, dl {
   margin-bottom: 20px;

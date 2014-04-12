@@ -1,6 +1,5 @@
 <?php
 require_once("Classes/FTP.Class.php");
-echo "kkkkkkk"; exit;
 	$file = $_FILES['Photo'];
 	$tempFile = $_FILES['Photo']['tmp_name'];
 	$targetPath = "/public_html/imagens/uploaded/"; // FTP path

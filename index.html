@@ -33,13 +33,69 @@
 <a name="welcome" class="anchor" href="#welcome"><span class="octicon octicon-link"></span></a>Let me introduce you an awesome plugin.</h3>
 
  <p>  This jQuery + AJAX + PHP plugin uploads an image asynchronous to your FTP server and just load it in your page. That's right! No reloads!! You can send and show your image without refresh!! </p>
+<p>   It has support for Internet Explorer 10 < or > 10.</p>
+<h3>
+<a name="how" class="anchor" href="#how"><span class="octicon octicon-link"></span></a>Outstanding! That's exactly what I'm looking for. But how does it work?</h3>
+ <p> I'll tell you a little bit more about it. It's a simple and optimal idea. You want to upload an image to your website, for innumeral uses, like profiles photos, products images or whatever you want. </p>
+ <div style="padding-left:60px;">
+      <h4> Getting the image and sending to PHP</h4>
+      <p>The idea is to get the image with jQuery and send it to php via ajax request. There, we already do some validations</p>
+      <pre><code>
+        <span class="red">var</span> data = <span class="green">new</span> FormData();
+        data.append("<span class="yellow">Photo</span>", <span class="red">$</span>(this).prop("<span class="yellow">files</span>")[0]);
+          <span class="red">$</span>.ajax(
+            {
+                <span class="green">url</span>: '<span class="yellow">photo_controller.php</span>',
+                <span class="green">secureuri</span>: false,
+                <span class="green">fileElementId</span>: '<span class="yellow">photo_input</span>',
+                <span class="green">dataType</span>: "<span class="yellow">json</span>",
+                <span class="green">data</span>: data,
+                <span class="green">cache</span>: false,
+                <span class="green">enctype</span>: "<span class="yellow">multipart/form-data</span>",
+                <span class="green">type</span>: "<span class="yellow">POST</span>",
+                <span class="green">processData</span>: false,
+                <span class="green">contentType</span>: false,
+            });
+
+      </code></pre>
+      <p>Note that we send as a JSON dataType. We'll use JSONs to treat our error messages and to know if the process has succeed or not.</p>
+      <br>
+
+      <h4>Getting the image on PHP</h4>
+      <p>Once the ajax process succeed, it's very easy to get the file as a variable.</p>
+        <pre><code>
+          <span class="yellow">$</span>file <span class="red">=</span> <span class="yellow">$</span>_FILES['<span class="green">Photo</span>'];
+          <span class="yellow">$</span>tempFile <span class="red">=</span> <span class="yellow">$</span>_FILES['<span class="green">Photo</span>']['<span class="green">tmp_name</span>'];
+        </code></pre>
+      <br>
+
+      <h4> Returning errors messages </h4>
+      <p> We use JSONs returns on the AJAX response. In the JS, we may return errors even if the ajax request don't send (it's an error, huh?)</p>
+      <pre><code>
+          <span style="color:gray">// PHP error example </span>
+            <span class="red">echo</span> '<span class="green">{"success": false, "msg":"The image needs to be the following extensions: '.(implode(",", $typesArray)).'"}</span>';
+
+          <span style="color:gray">// JS error example </span>
+              <span class="red">if</span> (<span class="green">data.msg</span>) {
+                 <span class="yellow">$</span>(".photo_error").show().html(<span class="green">data.msg</span>);
+              } <span class="red">else</span> {
+                  <span class="yellow">$</span>(".photo_error").show().html("<span class="red">An error occured. Check the image extension and size.</span>");
+              }
+      </code></pre>
+ </div>
 
 
- <p> To instructions, suggestions and more about the AIU, check the "Read Me" file in <a target="_BLANK" href="https://github.com/gfviegas/Assync-Image-Uploader/"> Git-Hub</a>.<br/>
-
- <h3>
-<a name="try" class="anchor" href="#try"><span class="octicon octicon-link"></span></a>Try it!</h3>
-<div id="upload-wrap">
+<h3>
+<a name="try" class="anchor" href="#try"><span class="octicon octicon-link"></span></a>What do I need to setup to start using AIU?</h3>
+So you are going to give a try, huh? Dont worry about a lot of div changes and hard plugin setup, you just need a few steps.
+  <ul>
+    <li>Give the file input an ID, or change the ID you're using on image-uploader.js</li>
+    <li>To set up your FTP data on FTP.Class.php</li>
+    <li>Create repositores and paths of images, and also set a default image, like a cute cat, for instance</li>
+    <li>Style it like you want! Be fancy!!</li>
+  </ul>
+  Aaaand... you're done! You are good to go!
+<!-- <div id="upload-wrap">
   <form action="" id="photo_form">
     <div id="upload-this">
       <input type="file" name="Photo" id="photo_input" /> 
@@ -50,10 +106,12 @@
   <div id="upload-show">
     <img src="images/default-image.jpg" alt="Send your image!!" id="photo_preview" />
   </div>
-</div>
+</div> -->
 
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p> You can (and you really should) support to this plugin. Fork it on GitHub and improve this plugin. We can reach the unniverse!!</p>
 
 <p>Having trouble? Contact the developer! <a href="facebook.com/gfviegas">Facebook</a> and my <b>email</b> (gustavo83geosc@gmail.com) are avaible and waiting for your contact! Good vibes!.</p>
         </section>

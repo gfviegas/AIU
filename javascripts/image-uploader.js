@@ -97,7 +97,7 @@ $(document).ready(function(){
         } else {
                  /*********************************************************** Nice Browsers ********************************************************************************/
             var data = new FormData();
-            data.append("Foto", $(this).prop("files")[0]);
+            data.append("Photo", $(this).prop("files")[0]);
 
             $('#photo_preview').attr("src", "images/ajax-loader.gif").addClass("loading");
             $(".photo_error").hide(); /* Hides the error message, if it is visible.*/
