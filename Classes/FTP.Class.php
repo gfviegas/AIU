@@ -1,6 +1,6 @@
 <?php
  Class FTP {
-	private $host = ""; // Seus dados de FTP
+	private $host = ""; // Your FTP data
 	private $user = "";
 	private $password = "";
 	public $connection;
@@ -17,7 +17,7 @@
 		ftp_pasv ($this->connection, true);
 		if (!$login)
 		{
-			echo '{"sucess": false, "msg":"Erro de autenticação do servidor"}';
+			echo '{"sucess": false, "msg":"Server authentication error"}';
 		}
 	}
 
@@ -28,7 +28,7 @@
 		$put = ftp_put($this->connection, $path, $file, $method);
 		if (!$put)
 		{
-			echo '{"success": false, "msg":"Ocorreu um erro"}';
+			echo '{"success": false, "msg":"Server error"}';
 		} 
 		else 
 		{

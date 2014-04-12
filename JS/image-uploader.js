@@ -1,17 +1,16 @@
 /*////////////////////////////////////////////////////////////////////////////////////
-         // ATENÇÃO: 
-         // Deixe o input com name Foto, ou altere no plugin e no controller.
-        // Se alterar algum valor abaixo, lembre-se de alterar no PHP também.
+         // CAUTION: 
+         // The file input name needs to be: "Photo" . If you change it, remember to change JS and PHP names as well.
 /////////////////////////////////////////////////////////////////////////////////////
-               // Não é recomendado editar a partir deste ponto.\\
+               //  It's strongly adviced to not change for this point foward, unless you are a pro in jQuery.\\
 */
 $(document).ready(function(){
-    var image_default = $('#photo_preview').attr("src"); /* Guarda o caminho da imagem-padrão, se a imagem falhar, ela será exibida.*/
+    var image_default = $('#photo_preview').attr("src"); /* Saves the default-image path. If something fails, it'll be shown again..*/
 
     $('#photo_input').on("change", function(){
 
         var _this = this;
-                        /********************************************************************   Suporte ao IE ****************************************************************************************/
+                        /********************************************************************    IE Support (yuk) ****************************************************************************************/
         function isAjaxUploadSupported(){
             var input = document.createElement("input");
                 input.type = "file";
@@ -57,9 +56,8 @@ $(document).ready(function(){
 
             var files = $(this)[0];
             form.appendChild(files);
-            $('#photo_preview').attr("src", "imagens/ajax-loader.gif").addClass("loading");
-            /* Esconde a mensagem de erro, caso ela esteja visível.*/
-            $(".photo_error").hide(); 
+            $('#photo_preview').attr("src", "images/ajax-loader.gif").addClass("loading");
+            $(".photo_error").hide();  /* Hides the error message, if it is visible.*/
 
             document.body.appendChild(form);
             document.body.appendChild(iframe);
@@ -82,7 +80,7 @@ $(document).ready(function(){
                          if(response.msg) {
                             $(".photo_error").show().html(response.msg);
                         } else {
-                            $(".photo_error").show().html("Ocorreu um erro, verifique o tipo e o tamanho da imagem.");
+                            $(".photo_error").show().html(" An error occured. Check the image extension and size.");
                         }
                 }
             };
@@ -97,13 +95,12 @@ $(document).ready(function(){
             $('#photo_form').append(_this);
 
         } else {
-                 /*********************************************************** Demais browsers ********************************************************************************/
+                 /*********************************************************** Nice Browsers ********************************************************************************/
             var data = new FormData();
             data.append("Foto", $(this).prop("files")[0]);
 
-            $('#photo_preview').attr("src", "imagens/ajax-loader.gif").addClass("loading");
-            $(".photo_error").hide();
-            /*Esconde a mensagem de erro, caso ela esteja visível .*/
+            $('#photo_preview').attr("src", "images/ajax-loader.gif").addClass("loading");
+            $(".photo_error").hide(); /* Hides the error message, if it is visible.*/
             $.ajax(
             {
                 
@@ -129,7 +126,7 @@ $(document).ready(function(){
                        if (data.msg) {
                             $(".photo_error").show().html(data.msg);
                         } else {
-                            $(".photo_error").show().html("Ocorreu um erro, verifique o tipo e o tamanho da imagem.");
+                            $(".photo_error").show().html(" An error occured. Check the image extension and size.");
                         }
                    }
                 },
@@ -140,7 +137,7 @@ $(document).ready(function(){
                      if (data.msg) {
                             $(".photo_error").show().html(data.msg);
                         } else {
-                            $(".photo_error").show().html("Ocorreu um erro, verifique o tipo e o tamanho da imagem. (JS)");
+                            $(".photo_error").show().html(" An error occured. Check the image extension and size.");
                         }
                     return false;
                 }
