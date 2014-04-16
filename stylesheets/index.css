@@ -42,3 +42,16 @@
 	color: #930001;
 	font-size: 70%;
 }
+#outerdiv {
+width:446px;
+height:300px;
+overflow:hidden;
+position:relative;
+}
+#innerdiv {
+position:absolute;
+top:-175px;
+left:-233px;
+width:1280px;
+height:1200px;
+}
