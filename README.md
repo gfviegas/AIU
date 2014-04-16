@@ -5,11 +5,10 @@
 
   @thanks : Thiago Luciano - github.com/tluciano
 
-Website
+Demo & Info
 =======================================================================================================================
 
-More info in  : http://gfviegas.github.io/AIU/ .
-Live demo in : http://live-demo-aiu.hol.es/.
+Visit  http://gfviegas.github.io/AIU/ .
 
 Intro
 ====================================================================================
