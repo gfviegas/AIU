@@ -1,9 +1,9 @@
   Assync-Image-Uploader
 =======================================================================================================================
 
-  @author : Gustavo Viegas - www.fb.com/gustavofviegas / gustavo83geosc@gmail.com
+  @author : Gustavo Viegas - [Facebook](http://fb.com/gustavofviegas) / [Email](gustavo83geosc@gmail.com)
 
-  @thanks : Thiago Luciano - [github.com/tluciano](http://github.com/tluciano)
+  @thanks : Thiago Luciano - [Github](http://github.com/tluciano)
 
 Demo & Info
 =======================================================================================================================
