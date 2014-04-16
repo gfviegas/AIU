@@ -1,5 +1,5 @@
 /*////////////////////////////////////////////////////////////////////////////////////
-         // CAUTION: 
+         // CAUTION:
          // The file input name needs to be: "Photo" . If you change it, remember to change JS and PHP names as well.
 /////////////////////////////////////////////////////////////////////////////////////
                //  It's strongly adviced to not change for this point foward, unless you are a pro in jQuery.\\
@@ -97,13 +97,13 @@ $(document).ready(function(){
         } else {
                  /*********************************************************** Nice Browsers ********************************************************************************/
             var data = new FormData();
-            data.append("Foto", $(this).prop("files")[0]);
+            data.append("Photo", $(this).prop("files")[0]);
 
             $('#photo_preview').attr("src", "images/ajax-loader.gif").addClass("loading");
             $(".photo_error").hide(); /* Hides the error message, if it is visible.*/
             $.ajax(
             {
-                
+
                 url: 'photo_controller.php',
                 secureuri: false,
                 fileElementId: 'photo_input',

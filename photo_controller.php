@@ -2,7 +2,7 @@
 require_once("Classes/FTP.Class.php");
 	$file = $_FILES['Photo'];
 	$tempFile = $_FILES['Photo']['tmp_name'];
-	$targetPath = "/public_html/imagens/uploaded/"; // FTP path
+	$targetPath = "public_html/images/uploaded/"; // FTP path
 	$typesArray = array("jpeg","jpg","gif","bmp","png");
 	$fileParts  = pathinfo($_FILES['Photo']['name']);
 
@@ -17,10 +17,9 @@ require_once("Classes/FTP.Class.php");
 			exit;
 		}
 		// Set here how you want the final-file name. Use ways to avoid name conflicts.
-		$name = "image_".time().".".$fileParts['extension']; 
-		$target_local_file =   "imagens/uploaded/".$name; // The path that will be your image source
+		$name = "image_".time().".".$fileParts['extension'];
 		$targetFile = str_replace('//','/',$targetPath).$name;
-		$ftp = new FTP($target_local_file);
+		$ftp = new FTP($targetFile);
 		$ftp->Upload($targetFile, $tempFile, FTP_BINARY);
 	}
 	 else
