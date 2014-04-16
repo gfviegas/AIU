@@ -3,7 +3,7 @@
 
   @author : Gustavo Viegas - www.fb.com/gustavofviegas / gustavo83geosc@gmail.com
 
-  @thanks : Thiago Luciano - github.com/tluciano
+  @thanks : Thiago Luciano - {Link}(github.com/tluciano)
 
 Demo & Info
 =======================================================================================================================
