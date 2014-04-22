@@ -3,10 +3,10 @@
 		var pluginName = "AIU",
 				defaults = {
 				'photo_input' : '#photo_input',
-			            	'photo_preview' : '#photo_preview',
-			            	'photo_form' : '#photo_form',
-			            	'photo_error' : '.photo_error',
-			            	'img_loading_path' : 'images/ajax-loader.gif',
+				'photo_preview' : '#photo_preview',
+				'photo_form' : '#photo_form',
+				'photo_error' : '.photo_error',
+				'img_loading_path' : 'images/ajax-loader.gif',
 				'php_path' : 'photo_controller.php'
 		};
 
