@@ -2,9 +2,7 @@
 
 		var pluginName = "AIU",
 				defaults = {
-				'photo_input' : '#photo_input',
 				'photo_preview' : '#photo_preview',
-				'photo_form' : '#photo_form',
 				'photo_error' : '.photo_error',
 				'img_loading_path' : 'images/ajax-loader.gif',
 				'php_path' : 'photo_controller.php'
@@ -26,10 +24,23 @@
 				init: function () {
 
 					$(this._input).on("change", $.proxy(function(){
+
+						$(photo_preview).attr("src", this.settings.img_loading_path).addClass("loading");
+						$(photo_error).hide(); /* Hides the error message, if it is visible.*/
+
+
 						var photo_preview = this.settings.photo_preview;
 						var photo_error = this.settings.photo_error;
 						var image_default = $(photo_preview).attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
 						var the_data = this;
+						var accept_ext = ["jpeg","jpg","gif","bmp","png"];
+						var file_extension = $(this._input).val().split('.').pop();
+						var result = $.inArray(file_extension, accept_ext);
+						var extensions = accept_ext.join(", ");
+						if (result == -1) {
+							$(photo_error).show().html(" The image needs to be the in following extensions:" + extensions + "");
+							return false;
+						}
 						 if(! this.isAjaxUploadSupported()){
 						            var iframe = document.createElement("iframe");
 						            iframe.setAttribute("id", "upload_iframe_myFile");
@@ -49,9 +60,6 @@
 
 						            var files = $(this)[0];
 						            form.appendChild(files);
-						            $(photo_preview).attr("src", this.settings.img_loading_path).addClass("loading");
-						            $(photo_error).hide();  /* Hides the error message, if it is visible.*/
-
 						            document.body.appendChild(form);
 						            document.body.appendChild(iframe);
 
@@ -92,8 +100,6 @@
 						            var data = new FormData();
 						            data.append("Photo", $(this._input).prop("files")[0]);
 
-						            $(photo_preview).attr("src", this.settings.img_loading_path).addClass("loading");
-						            $(photo_error).hide(); /* Hides the error message, if it is visible.*/
 						            $.ajax(
 						            {
 						                url: this.settings.php_path,

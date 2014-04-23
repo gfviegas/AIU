@@ -13,7 +13,7 @@ require_once("Classes/FTP.Class.php");
 		// Checks the image size.
 		if($file["size"] >= $config["size"])
 		{
-			echo '{"success": false, "msg":"The image max size is '.($config["tamanho"]/1024).' KBytes."}';
+			echo '{"success": false, "msg":"The image max size is '.($config["size"]/1024).' KBytes."}';
 			exit;
 		}
 		// Set here how you want the final-file name. Use ways to avoid name conflicts.
@@ -24,7 +24,7 @@ require_once("Classes/FTP.Class.php");
 	}
 	 else
 	{
-		echo '{"success": false, "msg":"The image needs to be the following extensions: '.(implode(",", $typesArray)).'"}';
+		echo '{"success": false, "msg":"The image needs to be in the following extensions: '.(implode(",", $typesArray)).'"}';
 		exit;
 	}
 ?>
