@@ -25,9 +25,6 @@
 
 					$(this._input).on("change", $.proxy(function(){
 
-						$(photo_preview).attr("src", this.settings.img_loading_path).addClass("loading");
-						$(photo_error).hide(); /* Hides the error message, if it is visible.*/
-
 
 						var photo_preview = this.settings.photo_preview;
 						var photo_error = this.settings.photo_error;
@@ -37,8 +34,13 @@
 						var file_extension = $(this._input).val().split('.').pop();
 						var result = $.inArray(file_extension, accept_ext);
 						var extensions = accept_ext.join(", ");
+
+						$(photo_preview).attr("src", this.settings.img_loading_path).addClass("loading");
+						$(photo_error).hide(); /* Hides the error message, if it is visible.*/
+
 						if (result == -1) {
 							$(photo_error).show().html(" The image needs to be the in following extensions:" + extensions + "");
+							$(photo_preview).attr("src", image_default).removeClass("loading");
 							return false;
 						}
 						 if(! this.isAjaxUploadSupported()){
