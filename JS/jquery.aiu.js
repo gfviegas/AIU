@@ -10,9 +10,8 @@
 
 		// Constructor
 		function Plugin ( element, options ) {
-				this.call_ID = $(element).attr("id");
 				this.element = element;
-				this._input = $("#"+this.call_ID +" input[type='file']");
+				this._input = $("input[type=file]", $(this));
 				this._options = options;
 				this.settings = $.extend( {}, defaults, options );
 				this._defaults = defaults;
