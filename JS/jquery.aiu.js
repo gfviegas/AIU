@@ -28,7 +28,7 @@
 						var image_default = $photo_preview.attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
 						var the_data = this;
 						var accept_ext = ["jpeg","jpg","gif","bmp","png"];
-						var file_extension = $(this._input).val().split('.').pop();
+						var file_extension = $(this._input).val().split('.').pop().toLowerCase();
 						var result = $.inArray(file_extension, accept_ext);
 						var extensions = accept_ext.join(", ");
 						var msgErrorDefault = " An error occured. Check the image extension and size.";
