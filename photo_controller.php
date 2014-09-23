@@ -5,6 +5,7 @@ require_once("Classes/FTP.Class.php");
 	$targetPath = "public_html/images/uploaded/"; // FTP path
 	$typesArray = array("jpeg","jpg","gif","bmp","png");
 	$fileParts  = pathinfo($_FILES['Photo']['name']);
+	$fileParts['extension'] = strtolower($fileParts['extension']);
 
 	if (in_array($fileParts['extension'],$typesArray))
 	{
