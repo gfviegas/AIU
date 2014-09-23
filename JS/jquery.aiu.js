@@ -10,9 +10,8 @@
 
 		// Constructor
 		function Plugin ( element, options ) {
-				this.call_ID = $(element).attr("id");
 				this.element = element;
-				this._input = $("#"+this.call_ID +" input[type='file']");
+				this._input = $("input[type=file]", $(element));
 				this._options = options;
 				this.settings = $.extend( {}, defaults, options );
 				this._defaults = defaults;
@@ -24,23 +23,22 @@
 				init: function () {
 
 					$(this._input).on("change", $.proxy(function(){
-
-
-						var photo_preview = this.settings.photo_preview;
-						var photo_error = this.settings.photo_error;
-						var image_default = $(photo_preview).attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
+						var $photo_preview = $(this.settings.photo_preview);
+						var $photo_error = $(this.settings.photo_error);
+						var image_default = $photo_preview.attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
 						var the_data = this;
 						var accept_ext = ["jpeg","jpg","gif","bmp","png"];
 						var file_extension = $(this._input).val().split('.').pop();
 						var result = $.inArray(file_extension, accept_ext);
 						var extensions = accept_ext.join(", ");
+						var msgErrorDefault = " An error occured. Check the image extension and size.";
 
-						$(photo_preview).attr("src", this.settings.img_loading_path).addClass("loading");
-						$(photo_error).hide(); /* Hides the error message, if it is visible.*/
+						$photo_preview.attr("src", this.settings.img_loading_path).addClass("loading");
+						$photo_error.hide(); /* Hides the error message, if it is visible.*/
 
 						if (result == -1) {
-							$(photo_error).show().html(" The image needs to be the in following extensions:" + extensions + "");
-							$(photo_preview).attr("src", image_default).removeClass("loading");
+							$photo_error.show().html(" The image needs to be the in following extensions:" + extensions + "");
+							$photo_preview.attr("src", image_default).removeClass("loading");
 							return false;
 						}
 						 if(! this.isAjaxUploadSupported()){
@@ -75,16 +73,14 @@
 						                response = this.getIframeContentJSON(iframeIdmyFile);
 						                if(response.success)
 						                {
-						                    $(photo_preview).attr("src", response.src).removeClass("loading");
+						                    $photo_preview.attr("src", response.src).removeClass("loading");
 						                }
 						                else
 						                {
-						                    $(photo_preview).attr("src", image_default).removeClass("loading");
-						                         if(response.msg) {
-						                            $(photo_error).show().html(response.msg);
-						                        } else {
-						                            $(photo_error).show().html(" An error occured. Check the image extension and size.");
-						                        }
+						                	var message = response.msg || msgErrorDefault;
+
+					                    	$photo_error.show().html(message);
+						                    $photo_preview.attr("src", image_default).removeClass("loading");
 						                }
 						            };
 
@@ -118,26 +114,23 @@
 						                {
 						                   if(data.success)
 						                   {
-						                        $(photo_preview).attr("src", data.src).removeClass("loading");
+						                        $photo_preview.attr("src", data.src).removeClass("loading");
 						                   }
 						                   else
 						                   {
-						                        $(photo_preview).attr("src", image_default).removeClass("loading");
-						                       if (data.msg) {
-						                            $(photo_error).show().html(data.msg);
-						                        } else {
-						                            $(photo_error).show().html(" An error occured. Check the image extension and size.");
-						                        }
+						                   		var message = data.msg || msgErrorDefault;
+
+						                    	$photo_error.show().html(message);
+							                    $photo_preview.attr("src", image_default).removeClass("loading");
 						                   }
 						                },
 						                error: function(xhr, textStatus, errorThrown)
 						                {
-						                    $(photo_preview).attr("src", image_default).removeClass("loading");
-						                     if (data.msg) {
-						                            $(photo_error).show().html(data.msg);
-						                        } else {
-						                            $(photo_error).show().html(" An error occured. Check the image extension and size.");
-						                        }
+						                    var message = data.msg || msgErrorDefault;
+
+					                    	$photo_error.show().html(message);
+						                    $photo_preview.attr("src", image_default).removeClass("loading");
+
 						                    return false;
 						                }
 						            });
