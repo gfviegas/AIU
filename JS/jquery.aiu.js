@@ -11,7 +11,7 @@
 		// Constructor
 		function Plugin ( element, options ) {
 				this.element = element;
-				this._input = $("input[type=file]", $(this));
+				this._input = $("input[type=file]", $(element));
 				this._options = options;
 				this.settings = $.extend( {}, defaults, options );
 				this._defaults = defaults;
