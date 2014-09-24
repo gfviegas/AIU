@@ -58,7 +58,7 @@
 						            form.setAttribute("encoding", "multipart/form-data");
 						            form.style.display = "none";
 
-						            var files = $(that)[0];
+						            var files = $(this)[0];
 						            form.appendChild(files);
 						            document.body.appendChild(form);
 						            document.body.appendChild(iframe);
