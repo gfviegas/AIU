@@ -18,6 +18,7 @@
 		if (!$login)
 		{
 			echo '{"sucess": false, "msg":"Server authentication error"}';
+			exit;
 		}
 	}
 
@@ -29,6 +30,7 @@
 		if (!$put)
 		{
 			echo '{"success": false, "msg":"Server error"}';
+			exit;
 		}
 		else
 		{

@@ -5,7 +5,9 @@
 				'photo_preview' : '#photo_preview',
 				'photo_error' : '.photo_error',
 				'img_loading_path' : 'images/ajax-loader.gif',
-				'php_path' : 'photo_controller.php'
+				'php_path' : 'photo_controller.php',
+				'callback_success' : callbackSuccess,
+				'callback_fails' : callbackFails
 		};
 
 		// Constructor
@@ -19,6 +21,13 @@
 				this.init();
 		}
 
+		function callbackSuccess(){
+			console.log('Default Callback Success function called!');
+		}
+		function callbackFails(){
+			console.log('Default Callback Fails function called!');
+		}
+
 		Plugin.prototype = {
 				init: function () {
 					var that = this;
@@ -28,6 +37,8 @@
 					var accept_ext = ["jpeg","jpg","gif","bmp","png"];
 					var extensions = accept_ext.join(", ");
 					var msgErrorDefault = " An error occured. Check the image extension and size.";
+					var callback_success = this.settings.callback_success;
+					var callback_fails = this.settings.callback_fails;
 
 					$(this._input).on("change", function(){
 						var file_extension = $(this).val().split('.').pop().toLowerCase();
@@ -74,6 +85,7 @@
 						                if(response.success)
 						                {
 						                    $photo_preview.attr("src", response.src).removeClass("loading");
+						                    callback_success();
 						                }
 						                else
 						                {
@@ -81,6 +93,7 @@
 
 					                    	$photo_error.show().html(message);
 						                    $photo_preview.attr("src", image_default).removeClass("loading");
+						                    callback_fails();
 						                }
 						            };
 
@@ -115,6 +128,7 @@
 						                   if(data.success)
 						                   {
 						                        $photo_preview.attr("src", data.src).removeClass("loading");
+						                        callback_success();
 						                   }
 						                   else
 						                   {
@@ -122,6 +136,7 @@
 
 						                    	$photo_error.show().html(message);
 							                    $photo_preview.attr("src", image_default).removeClass("loading");
+						                        callback_fails();
 						                   }
 						                },
 						                error: function(xhr, textStatus, errorThrown)
@@ -130,6 +145,7 @@
 
 					                    	$photo_error.show().html(message);
 						                    $photo_preview.attr("src", image_default).removeClass("loading");
+					                        callback_fails();
 
 						                    return false;
 						                }

@@ -28,7 +28,15 @@
 	<img src="images/default-image.jpg" alt="Send your image!!" id="photo_preview" />
 </div></div>
 <script type="text/javascript">
-	$("#photo_form").AIU();
+			function showthisifsuccess(){
+				console.log("It has succeed, and my settings logged this!!!!");
+			}
+			$("#photo_form").AIU({
+				'callback_fails': function(){
+					console.log("It has failed, and my settings logged that!!!");
+				},
+				'callback_success' : showthisifsuccess
+			});
 </script>
 </body>
 </html>
