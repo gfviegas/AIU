@@ -21,19 +21,19 @@
 
 		Plugin.prototype = {
 				init: function () {
+					var that = this;
+					var $photo_preview = $(this.settings.photo_preview);
+					var $photo_error = $(this.settings.photo_error);
+					var image_default = $photo_preview.attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
+					var accept_ext = ["jpeg","jpg","gif","bmp","png"];
+					var extensions = accept_ext.join(", ");
+					var msgErrorDefault = " An error occured. Check the image extension and size.";
 
-					$(this._input).on("change", $.proxy(function(){
-						var $photo_preview = $(this.settings.photo_preview);
-						var $photo_error = $(this.settings.photo_error);
-						var image_default = $photo_preview.attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
-						var the_data = this;
-						var accept_ext = ["jpeg","jpg","gif","bmp","png"];
-						var file_extension = $(this._input).val().split('.').pop().toLowerCase();
+					$(this._input).on("change", function(){
+						var file_extension = $(this).val().split('.').pop().toLowerCase();
 						var result = $.inArray(file_extension, accept_ext);
-						var extensions = accept_ext.join(", ");
-						var msgErrorDefault = " An error occured. Check the image extension and size.";
 
-						$photo_preview.attr("src", this.settings.img_loading_path).addClass("loading");
+						$photo_preview.attr("src", that.settings.img_loading_path).addClass("loading");
 						$photo_error.hide(); /* Hides the error message, if it is visible.*/
 
 						if (result == -1) {
@@ -41,7 +41,7 @@
 							$photo_preview.attr("src", image_default).removeClass("loading");
 							return false;
 						}
-						 if(! this.isAjaxUploadSupported()){
+						 if(!that.isAjaxUploadSupported()){
 						            var iframe = document.createElement("iframe");
 						            iframe.setAttribute("id", "upload_iframe_myFile");
 						            iframe.setAttribute("name", "upload_iframe_myFile");
@@ -52,13 +52,13 @@
 						            iframe.style.display = "none";
 						            var form = document.createElement("form");
 						            form.setAttribute("target", "upload_iframe_myFile");
-						            form.setAttribute("action", this.settings.php_path);
+						            form.setAttribute("action", that.settings.php_path);
 						            form.setAttribute("method", "post");
 						            form.setAttribute("enctype", "multipart/form-data");
 						            form.setAttribute("encoding", "multipart/form-data");
 						            form.style.display = "none";
 
-						            var files = $(this)[0];
+						            var files = $(that)[0];
 						            form.appendChild(files);
 						            document.body.appendChild(form);
 						            document.body.appendChild(iframe);
@@ -70,7 +70,7 @@
 						                else
 						                    iframeIdmyFile.removeEventListener("load", eventHandlermyFile, false);
 
-						                response = this.getIframeContentJSON(iframeIdmyFile);
+						                response = that.getIframeContentJSON(iframeIdmyFile);
 						                if(response.success)
 						                {
 						                    $photo_preview.attr("src", response.src).removeClass("loading");
@@ -91,16 +91,16 @@
 
 						            form.submit();
 
-						            $(photo_form).append(the_data);
+						            $(photo_form).append(that);
 
 						        } else {
 						                 /*********************************************************** Nice Browsers ********************************************************************************/
 						            var data = new FormData();
-						            data.append("Photo", $(this._input).prop("files")[0]);
+						            data.append("Photo", $(this).prop("files")[0]);
 
 						            $.ajax(
 						            {
-						                url: this.settings.php_path,
+						                url: that.settings.php_path,
 						                secureuri: false,
 						                fileElementId: 'photo_input',
 						                dataType: "json",
@@ -135,7 +135,7 @@
 						                }
 						            });
 						        }
-					}, this));
+					});
 
 				},
 
