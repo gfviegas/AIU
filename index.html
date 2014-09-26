@@ -59,14 +59,50 @@ So you are going to give a try? It's easy as A-B-C to use AIU.
 	<h4> Parameters </h4>
 	<p>Note that all these parameters have a default setup, which means that you don't NEED to use them.</p>
 		<pre class="set"><code>
-<span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
-   <span class="red">{</span>
-     '<span class="green">photo_preview</span>' : <span class="yellow">'#photo_preview'</span>,  <span style="color:gray">// The selector where you'll show your uploaded image (the image tag) </span>
-     '<span class="green">photo_error</span>' : <span class="yellow">'.photo_error'</span>, <span style="color:gray">// The selector where you'll show message error. If you already have one, set it.</span>
-     '<span class="green">img_loading_path</span>' : <span class="yellow">'images/ajax-loader.gif'</span> <span style="color:gray">// The 'loading' image path when you start the request</span>
-   <span class="red">}</span>
-);
+      <span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
+         <span class="red">{</span>
+           '<span class="green">photo_preview</span>' : <span class="yellow">'#photo_preview'</span>,  <span style="color:gray">// The selector where you'll show your uploaded image (the image tag) </span>
+           '<span class="green">photo_error</span>' : <span class="yellow">'.photo_error'</span>, <span style="color:gray">// The selector where you'll show message error. If you have one, set it.</span>
+           '<span class="green">img_loading_path</span>' : <span class="yellow">'images/ajax-loader.gif'</span> <span style="color:gray">// The 'loading' image path when you start the request</span>
+           '<span class="green">php_path</span>' : <span class="yellow">'photo_controller.php'</span> <span style="color:gray">// Your ajax PHP path/route</span>
+           '<span class="green">callback_success</span>' : <span class="yellow">'MyOKCallbackFunction'</span> <span style="color:gray">// A function to be called when everything went well</span>
+           '<span class="green">callback_fails</span>' : <span class="yellow">'MyGeezCallbackFunction'</span> <span style="color:gray">// A function to be called when everything DIDN'T went well</span>
+         <span class="red">}</span>
+      );
 		</pre></code>
+  <h4> Callbacks </h4>
+  <p>AIU have an special treatment for your requests callbacks. You can configure what will happen after the request in two ways. The first one is setting the stuffs on the plugin call:</p>
+    <pre class="set"><code>
+      <span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
+         <span class="red">{</span>
+            <span style="color:gray">// Calling callbacks on the plugin call</span>
+           '<span class="green">callback_success</span>' : <span class="yellow">function()</span>{
+                                  <span class="red">$("body").hide();</span><span style="color:gray">// Yes, you can hide your whole page after an image upload!</span>
+                                }
+           '<span class="green">callback_fails</span>' : <span class="yellow">function()</span>{
+                                <span class="yellow">while(true){</span>
+                                  <span class="red">alert("YOU SUCK INTERNET!")</span><span style="color:gray">// Why don't you span alerts when something fails?</span>
+                                <span class="yellow">}</span>
+                              }
+         <span class="red">}</span>
+      );
+    </pre></code>
+  <p>Or you can use your already made functions by passing it reference:</p>
+  <pre class="set"><code>
+      <span class="red">function</span><span class="green"> MySuperAwesomeSucessFunction()</span>{
+        <span class="yellow">console.log("POTATO RULES");</span>
+      }
+      <span class="red">function</span><span class="green"> MyOhGeezFunction()</span>{
+        <span class="yellow">alert("FML");</span>
+      }
+      <span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
+         <span class="red">{</span>
+            <span style="color:gray">// Calling callbacks by passing already made functions</span>
+           '<span class="green">callback_success</span>' : <span class="yellow">'MySuperAwesomeSuccessFunction'</span>
+           '<span class="green">callback_fails</span>' : <span class="yellow">'MyOhGeezFunction'</span>
+         <span class="red">}</span>
+      );
+    </pre></code>
 </div>
   <ul>
     <li>Set up your paths in controller</li>
@@ -128,9 +164,9 @@ So you are going to give a try? It's easy as A-B-C to use AIU.
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support and Contact</h3>
 
-<p> You can (and you really should) support to this plugin. Fork it on GitHub and improve this plugin. We can reach the unniverse!!</p>
+<p> You can (and you really should) support to this plugin. Fork it on GitHub and improve this plugin.</p>
 
-<p>Having trouble? Contact the developer! <a href="facebook.com/gfviegas" target="_BLANK">Facebook</a> and my <b>email</b> (gustavo83geosc@gmail.com) are avaible and waiting for your contact! Good vibes!.</p>
+<p>Having trouble? Contact the developer! <a href="facebook.com/gfviegas" target="_BLANK">Facebook</a> and my <b>email</b> (ninja@gfviegas) are avaible and waiting for your contact! Good vibes!.</p>
         </section>
 
           <p class="repo-owner"><b>By</b> <a href="https://github.com/gfviegas" target="_BLANK">Gustavo Viegas</a><br>
