@@ -4,29 +4,60 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>AIU Live Demo</title>
 <link rel="StyleSheet" href="CSS/index.css" type="text/css" media="all">
+<link rel="StyleSheet" href="CSS/bootstrap.css" type="text/css" media="all">
 <script type="text/javascript" src="JS/jquery.js"></script>
 <script type="text/javascript" src="JS/jquery.AIU.js"></script>
 </head>
 <body>
-	<h1> Assync Image Uploader </h1>
+	<div class="jumbotron">
+		<div class="container">
+			<center>
+				<h1> Assync Image Uploader <small>or simply, AIU!</small> </h1>
+			</center>
+		</div>
+	</div>
  <hr/>
 
- <p> 	This jQuery + AJAX + PHP plugin uploads an image asynchronous to your FTP server and just load it in your page. That's right! No reloads!! You can send and show your image without refresh!! </p>
- <p> To instructions, suggestions and more about the AIU, check the "Read Me" file in <a target="_BLANK" href="https://github.com/gfviegas/AIU/"> Git-Hub</a>.<br/>
- <hr>
- <h3>Send your image: </h3>
-<div id="upload-wrap">
-	<form action="" id="photo_form">
-		<div id="upload-this">
-			<input type="file" name="Photo" id="photo_input" accept="image/*" />
-		</div>
-		<div class="photo_error" id="img_erro"></div>
-	</form>
+<div class="container">
+	<p> 	This jQuery + AJAX + PHP plugin uploads an image asynchronously to your FTP server and just load it in your page. That's right! No reloads!! You can send and show your image without refresh!! </p>
+	<p> To instructions, suggestions and more about the AIU, check the "Read Me" file in <a target="_BLANK" href="https://github.com/gfviegas/AIU/"> Git-Hub</a>.
+</div>
 
-<br/>
-<div id="upload-show">
-	<img src="images/default-image.jpg" alt="Send your image!!" id="photo_preview" />
-</div></div>
+ <hr/>
+
+<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">Send your image</h2>
+		</div>
+		<div class="panel-body">
+			<div id="upload-wrap">
+				<form id="photo_form">
+					<div class="form-group" id="upload-this">
+				    <label for="photo_input">Upload it!</label>
+				    <input type="file" name="Photo" id="photo_input" accept="image/*" >
+				    <p class="help-block">Max 1MB size. Accepted extensions: jpeg, jpg, gif, bmp and png</p>
+				  </div>
+				  <br>
+					<p class="photo_error alert alert-danger" hidden></p>
+				</form>
+				<br/>
+				<div id="upload-show">
+					<center>
+						<img src="images/image.jpg" class="img-thumbnail" alt="Send your image!!" id="photo_preview" />
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p class="text-muted">Something wrong? Open an issue on github or mail <a>ninja@gfviegas.com</a></p>
+  </div>
+</div>
+
 <script type="text/javascript">
 			function showthisifsuccess(src){
 				console.log("It has succeed, and my settings logged this!!!! src ->"+src);
