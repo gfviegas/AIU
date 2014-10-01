@@ -85,7 +85,7 @@
 						                if(response.success)
 						                {
 						                    $photo_preview.attr("src", response.src).removeClass("loading");
-						                    callback_success();
+						                    callback_success(response.src);
 						                }
 						                else
 						                {
@@ -128,7 +128,7 @@
 						                   if(data.success)
 						                   {
 						                        $photo_preview.attr("src", data.src).removeClass("loading");
-						                        callback_success();
+						                        callback_success(data.src);
 						                   }
 						                   else
 						                   {
