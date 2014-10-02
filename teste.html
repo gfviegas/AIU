@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="google-site-verification" content="1o-SbVeElgI9wkpOdQXrKuOJpz6HFPNSLr-rqofvYLk" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/teste.css" rel="stylesheet">
+    <link href="stylesheets/prettify.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="javascripts/main.js"></script>
+<script src="javascripts/prettify.js"></script>
+    <title>Assync Image Uploader - @gfviegas</title>
+  </head>
+
+<body data-spy="scroll" data-target=".navbar" onload="prettyPrint();">
+
+
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">Assync Image Uploader</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        <li class="dropdown">
+            <a id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Get AIU
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDrop1" role="menu">
+                <li class="">
+                    <a tabindex="-1" href="#one">Download .zip</a>
+                </li>
+                <li class="">
+                    <a tabindex="-1" href="#one">Download .tar.gz</a>
+                </li>
+                <li class="divider"></li>
+                <li class="">
+                    <a tabindex="-1" href="#three">Clone on GitHub</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+          <a href="#sec">View in GitHub</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#DemoModal">Live Demo</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#sec">by @gfviegas</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="masthead">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <br><h1>AIU
+            <p class="lead">Upload (and show) images with one request!</p>
+            <p class="lead smaller">Even on Internet Explorer</p>
+          </h1>
+        </div>
+        <!-- <div class="col-md-5">
+            <div class="well well-lg">
+              <div class="row">
+                <div class="col-sm-6">
+                    <img src="//placehold.it/180x100" class="img-responsive">
+                </div>
+                <div class="col-sm-6">
+                    <strong>Important</strong>
+                    <p>Blah blah blah blah bla!</p>
+                </div>
+              </div>
+            </div>
+        </div> -->
+      </div>
+  </div><!-- /cont -->
+</div>
+
+<!-- Begin Body -->
+<div class="container">
+    <div class="row">
+            <div class="col-md-3" id="leftCol">
+
+                <ul class="nav nav-stacked" id="sidebar">
+                  <li>
+                    <a href="#GettingStarted">Getting Started</a>
+                    <ul class="nav">
+                      <li class=""><a href="#Markup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Markup</a></li>
+                      <li class=""><a href="#Call">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Call</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#Setup">Setup</a>
+                    <ul class="nav">
+                      <li class=""><a href="#Parameters">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Parameters</a></li>
+                      <li class=""><a href="#Default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Default Values</a></li>
+                      <li class=""><a href="#Backend">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Backend Setup</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#sec2">Section 2</a></li>
+                  <li><a href="#sec3">Section 3</a></li>
+                  <li><a href="#sec4">Section 4</a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-9">
+                <span class="content-separator" id="GettingStarted"></span>
+                <h2>Getting Started</h2>
+                    <p>Assync Image Uploader (AIU) is a plugin to make asynchronous image uploads and show it on your page without refreshing the page. Mostly ajax-send-images plugins have scripts too heavy, or uses iFrames, which is not optimal. They are heavy and bugs your codes. IE 10 - needs to use them, unfortunately.</p>
+                    <p>AIU already checks for the best option based on the user browser. If the user is running IE 9 or fewer, it'll create iFrames and make all the progress in the same way that modern browsers do, with AIU.</p>
+                    <p>Need support IE 10 -? Wants to upload and show your image assynchrnously? Use AIU!</p>
+
+                <span class="content-separator" id="Markup"></span>
+                <h3>Markup</h3>
+                    <p>You only need a few things to watch on your HTML: </p>
+                    <ul>
+                        <li>Give your input[type=file] the attribute <b>name</b> = "Photo"</li>
+                        <li>Have an unique class or ID in your <b>form</b> (or any tag that wraps your input)</li>
+                        <li>Have an unique class or ID in your <b>img</b> tag that'll show the uploaded image.</li>
+                        <li>Have an unique class or ID in a pre-existent tag that displays your errors messages.</li>
+                     </ul>
+                    <p>Check an example of a markup form using AIU standards and using twitter bootstrap classes</p>
+                    <pre class="prettyprint">
+&lt;form id="photo_form"&gt;
+    &lt;div class="form-group" id="upload-this"&gt;
+        &lt;label for="photo_input"&gt;Upload it!&lt;/label&gt;
+        &lt;input type="file" name="Photo" id="photo_input" accept="image/*" &gt;
+        &lt;p class="help-block"&gt;Max 1MB size. Accepted extensions: jpeg, jpg, gif, bmp and png&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p class="photo_error alert alert-danger" hidden&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;div id="upload-show"&gt;
+    &lt;center&gt;
+        &lt;img src="images/image.jpg" class="img-thumbnail" alt="Send your image!!" id="photo_preview" /&gt;
+    &lt;/center&gt;
+&lt;/div&gt; </pre>
+
+                <span class="content-separator" id="Call"></span>
+                <h3>Call</h3>
+                    <p>Calling AIU is easier than open a pickles jar.</p>
+                    <pre class="prettyprint">
+$("YourFormSelector").AIU();</pre>
+                    <small>Yes, that's all.</small>
+
+
+                <hr class="col-md-12">
+                <hr class="col-md-12">
+
+                <span class="content-separator" id="Setup"></span>
+                <h2>Setup</h2>
+                    <p> There's some parameters that you can use to personalize how the plugin will work. All of these parameters have a default value and doesn't require for you to replace them.</p>
+                    <p> To use AIU paremeters you just have to place them in AIU call as an object. If you are used with others jQuery Plugins, yeah, this one acts the same.</p>
+
+                    <pre class="prettyprint">
+$('#YourFormSelector').AIU({
+    'photo_preview' : '#photo_preview',
+    'photo_error' : '.photo_error'
+});</pre>
+                    <small>Here's an example</small>
+
+                <span class="content-separator" id="Parameters"></span>
+                <h3>Parameters</h3>
+                    <p>Those are the avaibles options to you use on the AIU Call:</p>
+
+                    <dl class="dl-horizontal">
+                      <dt>photo_preview</dt> <dd>The selector where you'll show your uploaded image (the image tag)</dd>
+                      <dt>photo_error</dt> <dd>The selector where you'll show error messages.</dd>
+                      <dt>img_loading_path</dt> <dd>The 'loading' image path when you start the request</dd>
+                      <dt>php_path</dt> <dd>Your ajax PHP path/route</dd>
+                      <dt>callback_success</dt> <dd>A function to be called when everything went well</dd>
+                      <dt>callback_fails</dt> <dd>A function to be called when something went wrong</dd>
+                    </dl>
+
+                    <h4>Callbacks</h4>
+                        <p>You can setup what's gonna happen after a successful request and after a failed one. You can do it with the parameters <i><b>callback_success</b></i> and <i><b>callback_fails</b></i></p>
+                        <p>To use them, you can create a new function on the plugin call</p>
+                        <pre class="prettyprint">
+$('#YourFormSelector').AIU({
+    'callback_success' : function(){
+        $("body").hide(); // Yes, you can hide your whole page after an image upload!
+    },
+    'callback_fails' : function(){
+        while(true){
+            alert("YOU SUCK INTERNET!"); // Why don't you span alerts when something fails?
+        }
+    }
+});</pre>
+                        <p>You can also set the name of a existing function, to make a plugin call cleanier and to make it easier for mantain the callbacks functions</p>
+                        <pre class="prettyprint">
+function MySuperAwesomeSucessFunction(){
+    console.log("POTATO RULES");
+}
+function MyOhGeezFunction(){
+    alert("FML");
+}
+$('#YourFormSelector').AIU(
+    {
+        'callback_success' : 'MySuperAwesomeSuccessFunction',
+        'callback_fails' : 'MyOhGeezFunction'
+    }
+);
+</pre>
+                <hr><hr>
+                <span class="content-separator" id="Default"></span>
+                <h3>Default Values</h3>
+                    <p>There are the Default Values for the parameters:</p>
+                    <dl class="dl-horizontal">
+                      <dt>photo_preview</dt> <dd>"#photo_preview"</dd>
+                      <dt>photo_error</dt> <dd>".photo_error"</dd>
+                      <dt>img_loading_path</dt> <dd>"images/ajax-loader.gif"</dd>
+                      <dt>php_path</dt> <dd>"photo_controller.php"</dd>
+                      <dt>callback_success</dt> <dd>"MyOKCallbackFunction"</dd>
+                      <dt>callback_fails</dt> <dd>"MyGeezCallbackFunction"</dd>
+                    </dl>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="DemoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Try AIU</h4>
+      </div>
+      <div class="modal-body">
+        <p> Note: This demo wont work in IE. We are using an iFrame to show the Live Demo since github repo dont allow PHP. </p>
+        <p> In order to test the plugin in Internet Explorer you can visit <a href="http://live-demo-aiu.hol.es/"> this </a> . </p>
+        <div id="outerdiv">
+            <iframe id="innerdiv" src="http://live-demo-aiu.hol.es/" scrolling="no"></iframe>
+        </div
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

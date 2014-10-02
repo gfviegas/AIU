@@ -1,1 +1,15 @@
-console.log('This would be the main JS file.');
+$(document).ready(function() {
+	$('#sidebar').affix({
+	      offset: {
+	        top: 245
+	      }
+	});
+
+	var $body   = $(document.body);
+	var navHeight = $('.navbar').outerHeight(true) + 10;
+
+	$body.scrollspy({
+		target: '#leftCol',
+		offset: navHeight
+	});
+});

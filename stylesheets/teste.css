@@ -1,0 +1,108 @@
+body {
+	padding-top:50px;
+}
+*{outline: none!important;}
+
+.content-separator{padding-top: 35px;}
+
+#outerdiv {
+margin-left: 30px;
+width:470px;
+height:310px;
+overflow:hidden;
+position:relative;
+}
+#innerdiv {
+position:absolute;
+top:-175px;
+left:-233px;
+width:1280px;
+height:1200px;
+}
+
+.smaller {
+  font-size: 16px;
+}
+
+#masthead {
+	min-height:270px;
+	background-color:#000044;
+  	color:#aaaacc;
+}
+
+#masthead h1 {
+	font-size: 55px;
+	line-height: 1;
+}
+
+#masthead .well {
+	margin-top:13%;
+	background-color:#111155;
+  	border-color:#000033;
+}
+
+.icon-bar {
+	background-color:#fff;
+}
+
+/* hide sidebar sub menus by default */
+#sidebar.nav .nav {
+	display: none;
+    font-size:12px;
+}
+
+/* show sub menu when parent is active */
+#sidebar.nav>.active>ul {
+	display: block;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 100px;
+	}
+}
+
+.navbar-bright {
+	background-color:#111155;
+    color:#fff;
+}
+
+.navbar-bright a, #masthead a, #masthead .lead {
+  	color:#aaaacc;
+}
+
+.navbar-bright li.open{
+  background-color:#111155;
+    color:#fff;
+}
+
+.navbar-bright li > a:hover,  .navbar-bright li a:focus, .navbar-bright li a:hover, .navbar-bright .open > a:focus{
+    background-color:#000033;
+}
+
+.dropdown li a:focus, .dropdown li a:hover{
+  background: white;
+}
+
+.affix-top,.affix{
+	position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  	width:228px;
+  }
+
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+#sidebar li.active {
+  	border:0 #eee solid;
+  	border-right-width:4px;
+}
