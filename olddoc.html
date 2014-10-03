@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="google-site-verification" content="1o-SbVeElgI9wkpOdQXrKuOJpz6HFPNSLr-rqofvYLk" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Assync Image Uploader - @gfviegas</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>AIU</h1>
+        <h2>Assync Image Uploader <br> Upload (and show) images with one request!!!</h2>
+        <a href="https://github.com/gfviegas/AIU" target="_BLANK" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+
+
+          <h3>
+<a name="welcome" class="anchor" href="#welcome"><span class="octicon octicon-link"></span></a>Let me introduce you an awesome plugin.</h3>
+
+ <p>  This jQuery + AJAX + PHP plugin uploads an image asynchronously to your FTP server and load it in your page. That's right! No reloads!! You can send and show your image without refresh!! </p>
+<p style="font-weight:bold;">   It has support for Internet Explorer in any version.</p>
+
+ <h3>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Live Demo.</h3>
+<p> Note: This demo wont work in IE. To upload images in IE, it needs to create an iFrame. In this repository site we are using an iFrame to show the Live Demo since github repo dont allow PHP. </p>
+<p> In order to test the plugin in Internet Explorer you can visit <a href="http://live-demo-aiu.hol.es/"> this </a> . </p>
+<div id="outerdiv">
+    <iframe id="innerdiv" src="http://live-demo-aiu.hol.es/" scrolling="no"></iframe>
+</div>
+
+<h3>
+<a name="try" class="anchor" href="#try"><span class="octicon octicon-link"></span></a>Setup</h3>
+So you are going to give a try? It's easy as A-B-C to use AIU.
+<div style="margin-left:60px;">
+	<h4> Call </h4>
+		<pre><code>
+	<span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU();
+		</code></pre>
+	<h4> Parameters </h4>
+	<p>Note that all these parameters have a default setup, which means that you don't NEED to use them.</p>
+		<pre class="set"><code>
+      <span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
+         <span class="red">{</span>
+           '<span class="green">photo_preview</span>' : <span class="yellow">'#photo_preview'</span>,  <span style="color:gray">// The selector where you'll show your uploaded image (the image tag) </span>
+           '<span class="green">photo_error</span>' : <span class="yellow">'.photo_error'</span>, <span style="color:gray">// The selector where you'll show message error. If you have one, set it.</span>
+           '<span class="green">img_loading_path</span>' : <span class="yellow">'images/ajax-loader.gif'</span> <span style="color:gray">// The 'loading' image path when you start the request</span>
+           '<span class="green">php_path</span>' : <span class="yellow">'photo_controller.php'</span> <span style="color:gray">// Your ajax PHP path/route</span>
+           '<span class="green">callback_success</span>' : <span class="yellow">'MyOKCallbackFunction'</span> <span style="color:gray">// A function to be called when everything went well</span>
+           '<span class="green">callback_fails</span>' : <span class="yellow">'MyGeezCallbackFunction'</span> <span style="color:gray">// A function to be called when everything DIDN'T went well</span>
+         <span class="red">}</span>
+      );
+		</pre></code>
+  <h4> Callbacks </h4>
+  <p>AIU have an special treatment for your requests callbacks. You can configure what will happen after the request in two ways. The first one is setting the stuffs on the plugin call:</p>
+    <pre class="set"><code>
+      <span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
+         <span class="red">{</span>
+            <span style="color:gray">// Calling callbacks on the plugin call</span>
+           '<span class="green">callback_success</span>' : <span class="yellow">function()</span>{
+                                  <span class="red">$("body").hide();</span><span style="color:gray">// Yes, you can hide your whole page after an image upload!</span>
+                                }
+           '<span class="green">callback_fails</span>' : <span class="yellow">function()</span>{
+                                <span class="yellow">while(true){</span>
+                                  <span class="red">alert("YOU SUCK INTERNET!")</span><span style="color:gray">// Why don't you span alerts when something fails?</span>
+                                <span class="yellow">}</span>
+                              }
+         <span class="red">}</span>
+      );
+    </pre></code>
+  <p>Or you can use your already made functions by passing it reference:</p>
+  <pre class="set"><code>
+      <span class="red">function</span><span class="green"> MySuperAwesomeSucessFunction()</span>{
+        <span class="yellow">console.log("POTATO RULES");</span>
+      }
+      <span class="red">function</span><span class="green"> MyOhGeezFunction()</span>{
+        <span class="yellow">alert("FML");</span>
+      }
+      <span class="red">$</span>('<span class="yellow">#YourFormSelector</span>').AIU(
+         <span class="red">{</span>
+            <span style="color:gray">// Calling callbacks by passing already made functions</span>
+           '<span class="green">callback_success</span>' : <span class="yellow">'MySuperAwesomeSuccessFunction'</span>
+           '<span class="green">callback_fails</span>' : <span class="yellow">'MyOhGeezFunction'</span>
+         <span class="red">}</span>
+      );
+    </pre></code>
+</div>
+  <ul>
+    <li>Set up your paths in controller</li>
+    <li>Set up your FTP data on FTP.Class.php (or setup your own FTP conf)</li>
+  </ul>
+
+
+<h3>
+<a name="how" class="anchor" href="#how"><span class="octicon octicon-link"></span></a>Outstanding! That's exactly what I'm looking for. But how does it work?</h3>
+ <p> I'll tell you a little bit more about it. It's a simple and optimal idea. You want to upload an image to your website, for inumeral uses, like profiles photos, products images or whatever you want. </p>
+ <div style="padding-left:60px;">
+      <h4> Getting the image and sending to PHP</h4>
+      <p>The idea is to get the image with jQuery and send it to PHP via AJAX request. There, we already do some validations</p>
+      <pre><code>
+        <span class="red">var</span> data = <span class="green">new</span> FormData();
+        data.append("<span class="yellow">Photo</span>", <span class="red">$</span>(this).prop("<span class="yellow">files</span>")[0]);
+          <span class="red">$</span>.ajax(
+            {
+                <span class="green">url</span>: '<span class="yellow">photo_controller.php</span>',
+                <span class="green">secureuri</span>: false,
+                <span class="green">fileElementId</span>: '<span class="yellow">photo_input</span>',
+                <span class="green">dataType</span>: "<span class="yellow">json</span>",
+                <span class="green">data</span>: data,
+                <span class="green">cache</span>: false,
+                <span class="green">enctype</span>: "<span class="yellow">multipart/form-data</span>",
+                <span class="green">type</span>: "<span class="yellow">POST</span>",
+                <span class="green">processData</span>: false,
+                <span class="green">contentType</span>: false,
+            });
+
+      </code></pre>
+      <p>Note that we send as a JSON dataType. We'll use JSONs to treat our error messages and to know if the process has succeed or not.</p>
+      <br>
+
+      <h4>Getting the image on PHP</h4>
+      <p>Once the ajax process succeed, it's very easy to get the file as a variable.</p>
+        <pre><code>
+          <span class="yellow">$</span>file <span class="red">=</span> <span class="yellow">$</span>_FILES['<span class="green">Photo</span>'];
+          <span class="yellow">$</span>tempFile <span class="red">=</span> <span class="yellow">$</span>_FILES['<span class="green">Photo</span>']['<span class="green">tmp_name</span>'];
+        </code></pre>
+      <br>
+
+      <h4> Returning errors messages </h4>
+      <p> We use JSONs returns on the AJAX response. In the JS, we may return errors even if the ajax request don't send (it's an error, huh?)</p>
+      <pre class="set"><code>
+  <span style="color:gray">// PHP error example </span>
+    <span class="red">echo</span> '<span class="green">{"success": false, "msg":"The image needs to be the following extensions: '.(implode(",", $typesArray)).'"}</span>';
+
+  <span style="color:gray">// JS error example </span>
+      <span class="red">if</span> (<span class="green">data.msg</span>) {
+         <span class="yellow">$</span>(".photo_error").show().html(<span class="green">data.msg</span>);
+      } <span class="red">else</span> {
+          <span class="yellow">$</span>(".photo_error").show().html("<span class="red">An error occured. Check the image extension and size.</span>");
+      }
+      </code></pre>
+ </div>
+
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support and Contact</h3>
+
+<p> You can (and you really should) support to this plugin. Fork it on GitHub and improve this plugin.</p>
+
+<p>Having trouble? Contact the developer! <a href="facebook.com/gfviegas" target="_BLANK">Facebook</a> and my <b>email</b> (ninja@gfviegas) are avaible and waiting for your contact! Good vibes!.</p>
+        </section>
+
+          <p class="repo-owner"><b>By</b> <a href="https://github.com/gfviegas" target="_BLANK">Gustavo Viegas</a><br>
+            And a special help of <a href="https://github.com/tluciano" target="_BLANK">Thiago Luciano </a>.</p>
+
+        <aside id="sidebar">
+          <a href="https://github.com/gfviegas/AIU/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/gfviegas/AIU/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+
+
+        </aside>
+      </div>
+    </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+  <script src="javascripts/image-uploader.js" type="text/javascript"></script>
+  </body>
+</html>
