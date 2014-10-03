@@ -96,7 +96,7 @@
 </div>
 
 <!-- Begin Body -->
-<div class="container">
+<div class="container" id="conteudo">
     <div class="row">
             <div class="col-md-3" id="leftCol">
               <div id="scrollspythis">
@@ -121,13 +121,13 @@
               </div>
             </div>
             <div class="col-md-9">
-                <span class="content-separator" id="GettingStarted"></span>
+                <div class="content-separator" id="GettingStarted"></div>
                 <h2>Getting Started</h2>
                     <p>Assync Image Uploader (AIU) is a plugin to make asynchronous image uploads and show it on your page without refreshing the page. Mostly ajax-send-images plugins have scripts too heavy, or uses iFrames, which is not optimal. They are heavy and bugs your codes. IE 10 - needs to use them, unfortunately.</p>
                     <p>AIU already checks for the best option based on the user browser. If the user is running IE 9 or fewer, it'll create iFrames and make all the progress in the same way that modern browsers do, with AIU.</p>
                     <p>Need support IE 10 -? Wants to upload and show your image assynchrnously? Use AIU!</p>
 
-                <span class="content-separator" id="Markup"></span>
+                <div class="content-separator" id="Markup"></div>
                 <h3>Markup</h3>
                     <p>You only need a few things to watch on your HTML: </p>
                     <ul>
@@ -152,7 +152,7 @@
     &lt;/center&gt;
 &lt;/div&gt; </pre>
 
-                <span class="content-separator" id="Call"></span>
+                <div class="content-separator" id="Call"></div>
                 <h3>Call</h3>
                     <p>Calling AIU is easier than open a pickles jar.</p>
                     <pre class="prettyprint">
@@ -163,7 +163,7 @@ $("YourFormSelector").AIU();</pre>
                 <hr class="col-md-12">
                 <hr class="col-md-12">
 
-                <span class="content-separator" id="Setup"></span>
+                <div class="content-separator" id="Setup"></div>
                 <h2>Setup</h2>
                     <p> There's some parameters that you can use to personalize how the plugin will work. All of these parameters have a default value and doesn't require for you to replace them.</p>
                     <p> To use AIU paremeters you just have to place them in AIU call as an object. If you are used with others jQuery Plugins, yeah, this one acts the same.</p>
@@ -175,7 +175,7 @@ $('#YourFormSelector').AIU({
 });</pre>
                     <small>Here's an example</small>
 
-                <span class="content-separator" id="Parameters"></span>
+                <div class="content-separator" id="Parameters"></div>
                 <h3>Parameters</h3>
                     <p>Those are the avaibles options to you use on the AIU Call:</p>
 
@@ -217,7 +217,7 @@ $('#YourFormSelector').AIU(
     }
 );
 </pre>
-                <span class="content-separator" id="Default"></span>
+                <div class="content-separator" id="Default"></div>
                 <h3>Default Values</h3>
                     <p>There are the Default Values for the parameters:</p>
                     <dl class="dl-horizontal">
@@ -229,7 +229,7 @@ $('#YourFormSelector').AIU(
                       <dt>callback_fails</dt> <dd>"MyGeezCallbackFunction"</dd>
                     </dl>
 
-                <span class="content-separator" id="Backend"></span>
+                <div class="content-separator" id="Backend"></div>
                 <h3>Backend Setup</h3>
                     <p>AIU will make an AJAX request to your PHP path. Set the route with the <b>php_path</b> parameter. In AIU there's already an example controller. If you need something more custom, check how to get the file on this controller.</p>
                     <p>However, you need to return a JSON to the plugin:</p>
@@ -242,7 +242,7 @@ echo "{success:true, url:'/images/image_69690101.jpg'}";</pre>
                     <small>JSON success example</small>
                 <br><hr><hr>
 
-              <span class="content-separator" id="Support"></span>
+              <div class="content-separator" id="Support"></div>
               <h2>Support and Contact</h2>
               <p>You can (and you really should) support to this plugin. Fork it on GitHub and improve this plugin.</p>
               <p>Having trouble? Contact the developer! My email (ninja@gfviegas) is avaible and waiting for your contact! Good vibes!</p>

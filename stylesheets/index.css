@@ -3,8 +3,7 @@ body {
 }
 *{outline: none!important;}
 
-.content-separator{padding-top: 35px;}
-
+.content-separator{padding-top: 55px; margin-top:-55px;}
 
 #outerdiv {
 margin-left: 30px;
