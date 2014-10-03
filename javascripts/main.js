@@ -6,10 +6,10 @@ $(document).ready(function() {
 	});
 
 	var $body   = $(document.body);
-	var navHeight = $('.navbar').outerHeight(true) + 10;
+	var navHeight = $('.navbar').outerHeight(true) + 15;
 
 	$body.scrollspy({
-		target: '#leftCol',
+		target: '#scrollspythis',
 		offset: navHeight
 	});
 });
