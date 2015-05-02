@@ -7,7 +7,8 @@
 				'img_loading_path' : 'images/ajax-loader.gif',
 				'php_path' : 'photo_controller.php',
 				'callback_success' : callbackSuccess,
-				'callback_fails' : callbackFails
+				'callback_fails' : callbackFails,
+				'callback_onload' : callbackOnload
 		};
 
 		// Constructor
@@ -21,6 +22,9 @@
 				this.init();
 		}
 
+		function callbackOnload(){
+			console.log('Default Callback On Load function called!');
+		}
 		function callbackSuccess(){
 			console.log('Default Callback Success function called!');
 		}
@@ -39,8 +43,10 @@
 					var msgErrorDefault = " An error occured. Check the image extension and size.";
 					var callback_success = this.settings.callback_success;
 					var callback_fails = this.settings.callback_fails;
+					var callback_onload = this.settings.callback_onload;
 
 					$(this._input).on("change", function(){
+						callback_onload();
 						var file_extension = $(this).val().split('.').pop().toLowerCase();
 						var result = $.inArray(file_extension, accept_ext);
 
