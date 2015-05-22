@@ -8,9 +8,13 @@
 				'php_path' : 'photo_controller.php',
 				'callback_success' : callbackSuccess,
 				'callback_fails' : callbackFails,
+<<<<<<< HEAD
 				'error_msg': 'Something went wrong. Please try again later!',
 				'extension_accepted': ["jpeg","jpg","gif","bmp","png"],
 				'extension_msg': 'The image needs to be in the following extensions: jpeg, jpg, gif, bmp, png'
+=======
+				'callback_onload' : callbackOnload
+>>>>>>> f4e62d33352578f615aba16ebcd3a6973cf81177
 		};
 
 		// Constructor
@@ -24,6 +28,9 @@
 				this.init();
 		}
 
+		function callbackOnload(){
+			console.log('Default Callback On Load function called!');
+		}
 		function callbackSuccess(){
 			console.log('Default Callback Success function called!');
 		}
@@ -43,8 +50,10 @@
 					var extension_msg = this.settings.extension_msg;
 					var callback_success = this.settings.callback_success;
 					var callback_fails = this.settings.callback_fails;
+					var callback_onload = this.settings.callback_onload;
 
 					$(this._input).on("change", function(){
+						callback_onload();
 						var file_extension = $(this).val().split('.').pop().toLowerCase();
 						var result = $.inArray(file_extension, accept_ext);
 
