@@ -4,7 +4,7 @@
 				defaults = {
 				'photo_preview' : '#photo_preview',
 				'photo_error' : '.photo_error',
-				'img_loading_path' : '../img/ajax-loader.gif',
+				'img_loading_path' : 'images/ajax-loader.gif',
 				'php_path' : 'photo_controller.php',
 				'callback_success' : callbackSuccess,
 				'callback_fails' : callbackFails,
