@@ -8,7 +8,13 @@
 				'php_path' : 'photo_controller.php',
 				'callback_success' : callbackSuccess,
 				'callback_fails' : callbackFails,
+<<<<<<< HEAD
+				'error_msg': 'Something went wrong. Please try again later!',
+				'extension_accepted': ["jpeg","jpg","gif","bmp","png"],
+				'extension_msg': 'The image needs to be in the following extensions: jpeg, jpg, gif, bmp, png'
+=======
 				'callback_onload' : callbackOnload
+>>>>>>> f4e62d33352578f615aba16ebcd3a6973cf81177
 		};
 
 		// Constructor
@@ -39,9 +45,10 @@
 					var $photo_preview = $(this.settings.photo_preview);
 					var $photo_error = $(this.settings.photo_error);
 					var image_default = $photo_preview.attr("src"); 	/* Saves the default-image path. If something fails, it'll be shown again..*/
-					var accept_ext = ["jpeg","jpg","gif","bmp","png"];
+					var accept_ext = this.settings.extension_accepted;
 					var extensions = accept_ext.join(", ");
-					var msgErrorDefault = " An error occured. Check the image extension and size.";
+					var msgErrorDefault = this.settings.error_msg;
+					var extension_msg = this.settings.extension_msg;
 					var callback_success = this.settings.callback_success;
 					var callback_fails = this.settings.callback_fails;
 					var callback_onload = this.settings.callback_onload;
@@ -57,7 +64,7 @@
 						$photo_error.hide(); /* Hides the error message, if it is visible.*/
 
 						if (result == -1) {
-							$photo_error.show().html(" The image needs to be the in following extensions:" + extensions + "");
+							$photo_error.show().html(extension_msg);
 							$photo_preview.attr("src", image_default).removeClass("loading");
 							return false;
 						}

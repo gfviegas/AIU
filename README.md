@@ -1,7 +1,9 @@
   Assync-Image-Uploader
 =======================================================================================================================
 
-  @author : Gustavo Viegas - [Facebook](http://fb.com/gustavofviegas) / gustavo83geosc@gmail.com
+  jQuery plugin to send images asynchronously. Note that both PHP Controllers and FTP Classes are examples and doesn't affect on how the plugin works.
+
+  @author : Gustavo Viegas - [Personal Site](http://www.gfviegas.com) / ninja@gfviegas.com
 
   @thanks : Thiago Luciano - [Github](http://github.com/tluciano)
 
