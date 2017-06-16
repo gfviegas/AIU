@@ -8,13 +8,10 @@
 				'php_path' : 'photo_controller.php',
 				'callback_success' : callbackSuccess,
 				'callback_fails' : callbackFails,
-<<<<<<< HEAD
 				'error_msg': 'Something went wrong. Please try again later!',
 				'extension_accepted': ["jpeg","jpg","gif","bmp","png"],
 				'extension_msg': 'The image needs to be in the following extensions: jpeg, jpg, gif, bmp, png'
-=======
 				'callback_onload' : callbackOnload
->>>>>>> f4e62d33352578f615aba16ebcd3a6973cf81177
 		};
 
 		// Constructor
