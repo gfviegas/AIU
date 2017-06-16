@@ -28,6 +28,7 @@
 				this.init();
 		}
 
+
 		function callbackOnload(){
 			console.log('Default Callback On Load function called!');
 		}
@@ -53,7 +54,9 @@
 					var callback_onload = this.settings.callback_onload;
 
 					$(this._input).on("change", function(){
-						callback_onload();
+
+						callback_onload(that);
+
 						var file_extension = $(this).val().split('.').pop().toLowerCase();
 						var result = $.inArray(file_extension, accept_ext);
 
@@ -65,6 +68,7 @@
 							$photo_preview.attr("src", image_default).removeClass("loading");
 							return false;
 						}
+
 						 if(!that.isAjaxUploadSupported()){
 						            var iframe = document.createElement("iframe");
 						            iframe.setAttribute("id", "upload_iframe_myFile");
@@ -94,11 +98,12 @@
 						                else
 						                    iframeIdmyFile.removeEventListener("load", eventHandlermyFile, false);
 
+						                let time = new Date().valueOf();
 						                response = that.getIframeContentJSON(iframeIdmyFile);
 						                if(response.success)
 						                {
-						                    $photo_preview.attr("src", response.src).removeClass("loading");
-						                    callback_success(response.src);
+						                    $photo_preview.attr("src", response.src+'?v='+time).removeClass("loading");
+						                    callback_success(response.src, that);
 						                }
 						                else
 						                {
@@ -140,8 +145,9 @@
 						                {
 						                   if(data.success)
 						                   {
-						                        $photo_preview.attr("src", data.src).removeClass("loading");
-						                        callback_success(data.src);
+                                    			let time = new Date().valueOf();
+						                        $photo_preview.attr("src", data.src+'?v='+time).removeClass("loading");
+						                        callback_success(data.src, that);
 						                   }
 						                   else
 						                   {
